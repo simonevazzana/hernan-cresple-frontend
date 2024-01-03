@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "coverage": "nyc npm run test",
     "preview": "vite preview",
-    "test": "ENV=test ava -v -s"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +17,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
-    "ava": "^5.3.1",
-    "nyc": "^15.1.0",
     "vite": "^5.0.10"
   }
 }
