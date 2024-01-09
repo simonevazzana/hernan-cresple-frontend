@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #81a69b;
+  background-size: 100%;
+  margin-left: 3%;
+  font-family: "Comic Sans MS", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div .teams {
+  color: #fff;
+  display: grid;
+}
+
+.player {
+  margin-top: 10px;
+  width: 250px;
+}
+
+.selected {
+  font-weight: bold;
+  border-width: 3px;
+}
+
+.finalTeam {
+  margin-left: 5px;
+}
+
+.input {
+  display: grid;
+  width: 250px;
+  margin-top: 10px;
+}
+
+p {
+  padding-left: 5px;
+}
+
+.start,.end {
+  background-color: black;
+  color: white;
+}
+
+.finished {
+  background-color: greenyellow;
+}
+
+.solution {
+  background-color: lightskyblue;
+}
+
+.valid {
+  background-color: white;
+}
+
+.not-valid {
+  background-color: grey;
+  text-decoration: line-through;
+}
+
+table {
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+td {
+  border-color: black;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  height: 65px;
+  width: 20%;
+  padding: 3px;
+  user-select: none;
+}
+
+header>h1 {
+  display: inline-block;
+  background-size: 100%;
+  filter: brightness(150%);
+  width: 100px;
+  height: 110px;
+  overflow: hidden;
+  text-indent: -9999px;
+  margin: 20px 0;
+}
+
+h2 {
+  color: white;
+}
+
