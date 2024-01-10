@@ -21,7 +21,7 @@ const Chain = () => {
     }, 500)
 
     const searchPlayers = async () => {
-      const res = await fetch('http://localhost:2111/v1/player-search', {
+      const res = await fetch(getBackendUrl('v1/player-search'), {
         method: 'POST',
         body: JSON.stringify({ name: nameSearch }),
         headers: { 'Content-Type': 'application/json' }
