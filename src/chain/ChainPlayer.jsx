@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getBackendUrl } from '../lib/get-backend-url'
+import { getBackendUrl } from '../../lib/get-backend-url'
 
 const ChainPlayer = (props) => {
   const [finalTeam, setFinalTeam] = useState({})

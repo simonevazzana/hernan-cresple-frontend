@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Chain from './Chain'
+import Chain from './chain/Chain'
 
 const App = () => {
   return (

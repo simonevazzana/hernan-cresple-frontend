@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { CHAIN_MAX_ATTEMPTS } from '../lib/constants'
-import { getBackendUrl } from '../lib/get-backend-url'
-import { filterObjectProperties } from '../lib/object-utils'
+import { CHAIN_MAX_ATTEMPTS } from '../../lib/constants'
+import { getBackendUrl } from '../../lib/get-backend-url'
+import { filterObjectProperties } from '../../lib/object-utils'
 
 import ChainPlayer from './ChainPlayer'
 import ChainSelector from './ChainSelector'
