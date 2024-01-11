@@ -2,6 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Chain from './chain/Chain'
+import Board from './board/Board'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         }
         />
         <Route path='/chainpions' element={<Chain />} />
+        <Route path='/boardesliga' element={<Board />} />
       </Routes>
     </BrowserRouter>
   )
