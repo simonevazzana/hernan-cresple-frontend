@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useState } from 'react'
-import { CHAIN_DIFFICULTIES, CHAIN_LEAGUES, CHAIN_SEASONS } from '../../lib/constants'
+import { CHAIN_DIFFICULTIES, CHAIN_LEAGUES, CHAIN_SEASONS } from '../lib/constants'
 
-const ChainSelector = forwardRef((props, _ref) => {
+const DifficultySelector = forwardRef((props, _ref) => {
   const [difficulty, setDifficulty] = useState('')
   const [league, setLeague] = useState('')
   const [season, setSeason] = useState('')
@@ -70,4 +70,4 @@ const ChainSelector = forwardRef((props, _ref) => {
   )
 })
 
-export default ChainSelector
+export default DifficultySelector

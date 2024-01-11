@@ -4,11 +4,11 @@ import { getBackendUrl } from '../../lib/get-backend-url'
 import { filterObjectProperties } from '../../lib/object-utils'
 
 import ChainPlayer from './ChainPlayer'
-import ChainSelector from './ChainSelector'
 import ChainEnd from './ChainEnd'
+import DifficultySelector from '../DifficultySelector'
 
 const Chain = () => {
-  const chainSelectorRef = useRef({})
+  const difficultySelectorRef = useRef({})
   const [gameProperties, setGameProperties] = useState({})
   const [attempts, setAttempts] = useState([])
   const [attemptsLeft, setAttemptsLeft] = useState(CHAIN_MAX_ATTEMPTS)
@@ -43,7 +43,7 @@ const Chain = () => {
   }, [attemptsLeft])
 
   const startGame = async () => {
-    const { difficulty, league, season } = chainSelectorRef.current.getSelection()
+    const { difficulty, league, season } = difficultySelectorRef.current.getSelection()
 
     const startInput = filterObjectProperties({ difficulty, league, season })
 
@@ -107,7 +107,7 @@ const Chain = () => {
 
   return (
     <div>
-      <ChainSelector ref={chainSelectorRef} />
+      <DifficultySelector ref={difficultySelectorRef} />
       <button onClick={async e => {
         await startGame()
       }}
