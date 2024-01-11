@@ -24,6 +24,49 @@ div .teams {
   border-width: 3px;
 }
 
+.lightSol {
+  background-color: lightyellow;
+}
+
+.midSol {
+  background-color: yellow;
+}
+
+.solved.lightSol {
+  border-color: yellow;
+  border-width: 3px;
+}
+
+.solved.midSol {
+  border-color: orange;
+  border-width: 3px;
+}
+
+.solved1 {
+  background-color: lightgreen;
+}
+
+.solved2 {
+  background-color: lightskyblue;
+}
+
+.solved3 {
+  background-color: lightcoral;
+}
+
+.solved4 {
+  background-color: plum;
+}
+
+.solved5 {
+  background-color: burlywood;
+}
+
+.solved0 {
+  background-color: black;
+  color: white
+}
+
 .finalTeam {
   margin-left: 5px;
 }
