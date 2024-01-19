@@ -9,6 +9,10 @@ body {
   font-family: "Comic Sans MS", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+button {
+  font-family: "Comic Sans MS", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 div .teams {
   color: #fff;
   display: grid;
@@ -21,25 +25,41 @@ div .teams {
 
 .selected {
   font-weight: bold;
-  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.boardPiece {
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  height: 65px;
+  width: 150px;
+  padding: 3px;
+  user-select: none;
 }
 
 .lightSol {
-  background-color: lightyellow;
+  background-color: yellow;
 }
 
 .midSol {
-  background-color: yellow;
+  background-color: orange;
 }
 
 .solved.lightSol {
   border-color: yellow;
+  border-style: solid;
   border-width: 3px;
+  text-shadow: 1px 1px 1px yellow;
 }
 
 .solved.midSol {
   border-color: orange;
+  border-style: solid;
   border-width: 3px;
+  text-shadow: 1px 1px 1px orange;
 }
 
 .solved1 {
@@ -103,22 +123,70 @@ p {
   text-decoration: line-through;
 }
 
-table {
-  background-color: white;
-  border-color: black;
-  border-style: solid;
-  border-radius: 5px;
+.teamLogo {
+  max-width: 50px;
+  max-height: 50px;
 }
 
-td {
+.solved0>.teamLogo {
+  background-color: white;
+  padding: 2px;
+}
+
+.solved0>div>.teamLogo {
+  background-color: white;
+  padding: 2px;
+}
+
+.solved0.selected {
+  border-color: white;
+}
+
+.miniTeamLogo {
+  max-width: 25px;
+  max-height: 25px;
+}
+
+table {
+  background-color: gray;
   border-color: black;
   border-style: solid;
   border-radius: 5px;
-  text-align: center;
-  height: 65px;
-  width: 20%;
-  padding: 3px;
-  user-select: none;
+  border-spacing: 10px;
+  margin-top: 7px;
+}
+
+ul {
+  list-style-type: none;
+  color: black;
+}
+
+li {
+  width: 60%
+}
+
+label {
+  color: white
+}
+
+.moves {
+  color: white
+}
+
+.boardEnd {
+  color: white
+}
+
+.boardSolutionText {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+.boardSolution {
+  padding: 10px;
+  display: flex;
+  height: 100%;
 }
 
 header>h1 {
