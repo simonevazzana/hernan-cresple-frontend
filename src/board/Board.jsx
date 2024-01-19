@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { BOARD_BASE_CHECK, BOARD_MAX_ATTEMPTS } from '../../lib/constants'
+import { BOARD_BASE_CHECK, BOARD_MAX_MOVES } from '../../lib/constants'
 import { getBackendUrl } from '../../lib/get-backend-url'
 import { filterObjectProperties } from '../../lib/object-utils'
 
 import DifficultySelector from '../DifficultySelector'
-import { checkBoard, firstScramble, getPlayerClass, swapPlayers } from '../../lib/board-utils'
+import { checkBoard, firstScramble, getPlayerClass, insertRandomBadges, swapPlayers } from '../../lib/board-utils'
 import { unique } from '../../lib/array-utils'
+import BoardPiece from './BoardPiece'
+import BoardEnd from './BoardEnd'
+import BoardSolution from './BoardSolution'
 
 const sortSolution = (solution) => {
   solution.column.players.sort()
@@ -19,19 +22,19 @@ const sortSolution = (solution) => {
 
 const Board = () => {
   const difficultySelectorRef = useRef({})
-  const [gameProperties, setGameProperties] = useState({})
-  const [attemptsLeft, setAttemptsLeft] = useState(BOARD_MAX_ATTEMPTS)
+  const [gameProperties, setGameProperties] = useState({ gameResult: 'playing' })
+  const [movesLeft, setMovesLeft] = useState(BOARD_MAX_MOVES)
   const [selectedPlayers, setSelectedPlayers] = useState([])
   const [check, setCheck] = useState(BOARD_BASE_CHECK)
 
   useEffect(() => {
-    if (!attemptsLeft && gameProperties.gameResult === 'playing') {
+    if (!movesLeft && gameProperties.gameResult === 'playing') {
       setGameProperties({
         ...gameProperties,
         gameResult: 'lost'
       })
     }
-  }, [attemptsLeft])
+  }, [movesLeft])
 
   useEffect(() => {
     if (selectedPlayers.length <= 1) return
@@ -56,7 +59,7 @@ const Board = () => {
     setCheck(check)
     setGameProperties(newGameProperties)
     setSelectedPlayers([])
-    setAttemptsLeft(attemptsLeft - 1)
+    setMovesLeft(movesLeft - 1)
   }, [selectedPlayers])
 
   const startGame = async () => {
@@ -75,6 +78,8 @@ const Board = () => {
 
     const boardBase = await res.json()
 
+    insertRandomBadges({ boardBase })
+
     const solution = sortSolution({ ...boardBase })
     const board = boardBase.rows.map(r => [...r.players])
 
@@ -87,7 +92,7 @@ const Board = () => {
     }
 
     setGameProperties(gameProperties)
-    setAttemptsLeft(BOARD_MAX_ATTEMPTS)
+    setMovesLeft(BOARD_MAX_MOVES)
     setCheck(BOARD_BASE_CHECK)
     setSelectedPlayers([])
   }
@@ -104,6 +109,12 @@ const Board = () => {
       {
         gameProperties.board &&
           <div>
+            <button onClick={async e => {
+              setMovesLeft(0)
+            }}
+            >
+              Give up
+            </button>
             <table>
               <tbody>
                 {
@@ -117,7 +128,7 @@ const Board = () => {
                               setSelectedPlayers([...selectedPlayers, player])
                             }}
                           >
-                            {player}
+                            <BoardPiece name={player} />
                           </td>
                         ))
                       }
@@ -126,26 +137,16 @@ const Board = () => {
               }
               </tbody>
             </table>
-            Attempts left: {attemptsLeft}
+            <span className='moves'>Moves left: {movesLeft}</span>
           </div>
       }
       {
+        gameProperties.gameResult === 'playing' &&
+          <BoardSolution check={check} solution={gameProperties.solution} forced={false} />
+      }
+      {
         gameProperties.gameResult !== 'playing' &&
-          <div>
-            {
-              gameProperties.gameResult === 'won' &&
-                <div>
-                  Congrats! You won!
-                </div>
-            }
-
-            {
-              gameProperties.gameResult === 'lost' &&
-                <div>
-                  You lost, better luck next time!
-                </div>
-            }
-          </div>
+          <BoardEnd gameResult={gameProperties.gameResult} solution={gameProperties.solution} check={check} />
       }
     </div>
   )
