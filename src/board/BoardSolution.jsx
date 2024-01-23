@@ -30,7 +30,7 @@ const BoardSolution = (props) => {
     <ul>
       {
         solutionToDisplay.map((solIndex, index) => (
-          <BoardSolutionTeam key={index} solIndex={solIndex} players={solIndex ? props.solution.rows[solIndex - 1].players : props.solution.column.players} teamId={solIndex ? props.solution.rows[solIndex - 1].team.teamId : props.solution.column.team.teamId} teamName={solIndex ? props.solution.rows[solIndex - 1].team.teamName : props.solution.column.team.teamName} />
+          <BoardSolutionTeam key={index} solIndex={solIndex} players={solIndex ? solution.rows[solIndex - 1].players : solution.column.players} teamId={solIndex ? solution.rows[solIndex - 1].team.teamId : solution.column.team.teamId} teamName={solIndex ? solution.rows[solIndex - 1].team.teamName : solution.column.team.teamName} />
         ))
       }
     </ul>

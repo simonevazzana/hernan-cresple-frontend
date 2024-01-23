@@ -86,6 +86,7 @@ const Board = () => {
     firstScramble({ board, solution })
 
     const gameProperties = {
+      baseBoard: board,
       board,
       solution,
       gameResult: 'playing'
@@ -146,7 +147,7 @@ const Board = () => {
       }
       {
         gameProperties.gameResult !== 'playing' &&
-          <BoardEnd gameResult={gameProperties.gameResult} solution={gameProperties.solution} check={check} />
+          <BoardEnd gameResult={gameProperties.gameResult} boardBase={gameProperties.boardBase} solution={gameProperties.solution} check={check} />
       }
     </div>
   )
